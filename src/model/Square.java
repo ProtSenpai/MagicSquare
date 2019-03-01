@@ -30,19 +30,19 @@ public class Square {
 	
 	public boolean check() {
 		boolean v = false;
-		if(order%2 != 0) {
+		if(order%2 != 0 && order>0) {
 			v = true;
 		}
 		return v;
 	}
 	
-	public int[][] generate(int order) {
+	public int[][] generate() {
 		square = new int[order][order];
 		return square;
 	}
 	
 	//Main Method
-	public void fill(int first, int way, int[][] square, int order) {
+	public void fill(int first, int way) {
 		int n = 1;
 		//Up-Center
 		if(first == 1) {

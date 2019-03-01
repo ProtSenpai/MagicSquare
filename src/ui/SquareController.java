@@ -54,15 +54,16 @@ public class SquareController {
     		n=1;
     	}else if(first.equals("Down-Center")) {
     		n=2;
-    	}else if(first.equals("Left-Center")) {
+    	}/*else if(first.equals("Left-Center")) {
     		n=3;
     	}else {
     		n=4;
-    	}
+    	}*/
     	return n;
     }
     
     public int wayValue(String way) {
+    	
     	int n = 0;
     	if(way.equals("NO")) {
     		n=1;
@@ -77,12 +78,27 @@ public class SquareController {
     }
     
     public void generateSquare(ActionEvent event) {
-    	square.getChildren().clear();
-    	square.setGridLinesVisible(true);
+    	
+    	
+    	//square.setGridLinesVisible(true);
+    	try{
+    		
+        square.getChildren().clear();
+    	
     	int o = Integer.parseInt(txtOrder.getText());
     	s.setOrder(o);
     	
-    	if(s.check()) {
+    	}catch (NumberFormatException eo) {
+    		
+    		txtAdvice.setText("The value is invalid, please insert another one");
+    		
+    	} catch (NegativeArraySizeException oe) {
+    		
+    		txtAdvice.setText("The value is invalid");
+    		
+    	}
+    	
+    	if(s.check()==true) {
     		txtAdvice.setVisible(false);
     		square.setGridLinesVisible(true);
     		System.out.println("Generando...");
@@ -93,8 +109,8 @@ public class SquareController {
         	int w = wayValue(way);
         	
         	
-        	int[][] matrix = s.generate(o);
-        	s.fill(f, w, matrix, o);
+        	int[][] matrix = s.generate();
+        	s.fill(f, w);
         	
         	for(int i=0; i < matrix.length; i++) {
         		for(int j=0; j < matrix.length; j++) {
@@ -111,6 +127,10 @@ public class SquareController {
     		txtAdvice.setVisible(true);
     	}
     	
+    	
+    	
     }
+    
+    
 
 }

@@ -58,8 +58,7 @@
                 <FXCollections fx:factory="observableArrayList">
                     <String fx:id="option1" fx:value="Up-Center" />
                     <String fx:id="optieon2" fx:value="Left-Center" />
-                    <String fx:id="option3" fx:value="Right-Center" />
-                    <String fx:id="option3" fx:value="Down-Center" />
+                   
                 </FXCollections>
             </items>
       </ComboBox>
